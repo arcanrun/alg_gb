@@ -6,11 +6,15 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         MyArrayList<Integer> arr = new MyArrayList<>();
-        for (int i = 0; i < 1_00; i++) {
-            arr.add((int)(Math.random()*100));
+        for (int i = 0; i < 100000; i++) {
+            arr.add((int)(Math.random()*100000));
         }
 
+//        bubbleSortTime(arr); // 41546816210 ms
 
+//        selectionSortTime(arr); // 16006932259 ms
+
+//        insertionSortTime(arr);  //7590247886 ms
 
     }
 
