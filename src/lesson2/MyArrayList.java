@@ -30,7 +30,7 @@ public class MyArrayList<T extends Comparable<T>> {
     }
 
     private void dinamicCapacity() {
-        if(size >= currentCapacity*loadFactor){
+        if (size >= currentCapacity * loadFactor) {
             currentCapacity *= 2;
             T[] tempArr = (T[]) new Comparable[currentCapacity];
             for (int i = 0; i < size; i++) {
@@ -132,12 +132,37 @@ public class MyArrayList<T extends Comparable<T>> {
         }
     }
 
+    public void selectionSort(Comparator<T> comparator) {
+        for (int i = 0; i < size - 1; i++) {
+            int iMin = i;
+            for (int j = i + 1; j < size; j++) {
+                if (comparator.compare(list[j], list[iMin]) < 0) {
+                    iMin = j;
+                }
+            }
+            swap(i, iMin);
+        }
+    }
+
     public void insertionSort() {
         T key;
         for (int i = 1; i < size; i++) {
             int j = i;
             key = list[i];
             while (j > 0 && less(key, list[j - 1])) {
+                list[j] = list[j - 1];
+                j--;
+            }
+            list[j] = key;
+        }
+    }
+
+    public void insertionSort(Comparator<T> comparator) {
+        T key;
+        for (int i = 1; i < size; i++) {
+            int j = i;
+            key = list[i];
+            while (j > 0 && comparator.compare(key, list[j - 1]) < 0) {
                 list[j] = list[j - 1];
                 j--;
             }
