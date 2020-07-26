@@ -2,13 +2,14 @@ package lesson3;
 
 public class Main {
     public static void main(String[] args) {
-//        MyStack<Integer> stack = new MyStack<>();
-//        stack.push(1);
-//        stack.push(2);
-//        stack.push(3);
-//        stack.push(4);
-//        stack.push(5);
-//
+        MyStack<Integer> stack = new MyStack<>();
+        for (int i = 0; i < 1000; i++) {
+            stack.push(i);
+        }
+        System.out.println(stack.pop());
+
+
+
 //        for (int i = 0; i <5 ; i++) {
 //            System.out.println(stack.pop());
 //        }
@@ -29,18 +30,18 @@ public class Main {
 //        }
 
 
-        MyPriorityQueue<Integer> mpq = new MyPriorityQueue<>();
-
-        mpq.insert(5);
-        mpq.insert(1);
-        mpq.insert(7);
-        mpq.insert(4);
-        mpq.insert(2);
-
-        System.out.println(mpq);
-        for (int i = 0; i < 5 ; i++) {
-            System.out.println(mpq.remove());
-        }
+//        MyPriorityQueue<Integer> mpq = new MyPriorityQueue<>();
+//
+//        mpq.insert(5);
+//        mpq.insert(1);
+//        mpq.insert(7);
+//        mpq.insert(4);
+//        mpq.insert(2);
+//
+//        System.out.println(mpq);
+//        for (int i = 0; i < 5 ; i++) {
+//            System.out.println(mpq.remove());
+//        }
 
     }
 }
