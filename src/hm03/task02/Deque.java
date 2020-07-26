@@ -53,20 +53,29 @@ public class Deque<T> {
 
     }
 
-    public T remove() {
-        T value = peek();
+    public T removeLeft() {
+        T value = peekLeft();
         size--;
         list[begin] = null;
         begin = nextIndex(begin);
         return value;
     }
 
-    public T peek() {
+
+
+    public T peekLeft() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
         return list[begin];
     }
+    public T peekRight() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return list[end];
+    }
+
 
     private int nextIndex(int index) {
         return (index + 1) % list.length;
@@ -91,7 +100,6 @@ public class Deque<T> {
         if (!isEmpty()) {
             int i = begin;
             while (true) {
-                System.out.println(i);
                 sb.append(list[i]).append(", ");
                 i++;
                 if (i > list.length - 1) {
