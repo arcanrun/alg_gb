@@ -1,12 +1,14 @@
 package lesson3;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.EmptyStackException;
 
 public class MyPriorityQueue<T extends Comparable<T>> {
     private T[] list;
     private int size = 0;
     private final int DEFAULT_CAPACITY = 10;
+    private Comparator<T> comparator;
 
 
     public MyPriorityQueue(int capacity) {
@@ -20,6 +22,16 @@ public class MyPriorityQueue<T extends Comparable<T>> {
         list = (T[]) new Comparable[DEFAULT_CAPACITY];
     }
 
+    public MyPriorityQueue(Comparator<T> comparator) {
+        this();
+        this.comparator = comparator;
+    }
+
+    public MyPriorityQueue(Comparator<T> comparator, int capacity) {
+        this(capacity);
+        this.comparator = comparator;
+    }
+
     public void insert(T item) {
         if (isFull()) {
             throw new StackOverflowError();
@@ -27,9 +39,17 @@ public class MyPriorityQueue<T extends Comparable<T>> {
         list[size] = item;
         size++;
         int i = size - 1;
-        while (i > 0 && list[i].compareTo(list[i - 1]) > 0) {
-            swap(i, i - 1);
-            i--;
+        if (comparator != null) {
+            while (i > 0 && comparator.compare(list[i],list[i - 1]) > 0) {
+                swap(i, i - 1);
+                i--;
+            }
+        } else {
+
+            while (i > 0 && list[i].compareTo(list[i - 1]) > 0) {
+                swap(i, i - 1);
+                i--;
+            }
         }
     }
 
@@ -76,7 +96,7 @@ public class MyPriorityQueue<T extends Comparable<T>> {
     public String toString() {
 
         StringBuilder sb = new StringBuilder("[");
-        for (int i = 0; i <size ; i++) {
+        for (int i = 0; i < size; i++) {
             sb.append(list[i]).append(", ");
         }
         sb.setLength(sb.length() - 2);
