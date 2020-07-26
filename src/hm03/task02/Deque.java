@@ -7,7 +7,7 @@ public class Deque<T> {
     private int size = 0;
     private final int MAX_SIZE_DEFAULT = 10;
     private int begin = 0;
-    private int end = -1;
+    private int end = 0;
 
     //0 1 2 3 4
     //4     8 6
@@ -31,8 +31,17 @@ public class Deque<T> {
             throw new StackOverflowError();
         }
         size++;
-        end++;
-        list[end] = item;
+        if(list[end] == null){
+            list[end] = item;
+            end++;
+        }else {
+            end++;
+            if (end > list.length - 1) {
+                end = 0;
+            }
+            list[end] = item;
+        }
+
         if (end > list.length - 1) {
             end = 0;
         }
@@ -44,12 +53,21 @@ public class Deque<T> {
             throw new StackOverflowError();
         }
         size++;
-        begin--;
+        if(list[begin] == null){
+            list[begin] = item;
+            begin--;
+        }else {
+            begin--;
+            if (begin < 0) {
+                begin = list.length - 1;
+            }
+            list[begin] = item;
+        }
+
         if (begin < 0) {
             begin = list.length - 1;
         }
 
-        list[begin] = item;
 
     }
 
@@ -57,11 +75,12 @@ public class Deque<T> {
         T value = peekLeft();
         size--;
         list[begin] = null;
-        begin = nextIndex(begin);
+        begin++;
+        if (begin > list.length - 1) {
+            begin = 0;
+        }
         return value;
     }
-
-
 
     public T peekLeft() {
         if (isEmpty()) {
@@ -69,11 +88,29 @@ public class Deque<T> {
         }
         return list[begin];
     }
+
+    public T removeRight() {
+        T value = peekRight();
+        size--;
+        end--;
+        if (end < 0) {
+            end = list.length - 1;
+        }
+        list[end] = null;
+        return value;
+    }
+
+
+
     public T peekRight() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return list[end];
+        int peekInedx = end -1;
+        if(peekInedx < 0){
+            peekInedx = list.length -1;
+        }
+        return list[peekInedx];
     }
 
 
@@ -99,13 +136,15 @@ public class Deque<T> {
         StringBuilder sb = new StringBuilder("[");
         if (!isEmpty()) {
             int i = begin;
+
             while (true) {
+
                 sb.append(list[i]).append(", ");
                 i++;
                 if (i > list.length - 1) {
                     i = 0;
                 }
-                if (end +1 == i) {
+                if (end == i) {
                     break;
                 }
             }
