@@ -1,4 +1,4 @@
-package hm03;
+package hm03.task01;
 
 import lesson3.MyStack;
 

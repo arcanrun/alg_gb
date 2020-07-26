@@ -1,12 +1,11 @@
 package lesson3;
 
-import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class MyQueue<T> {
     private T[] list;
     private int size = 0;
-    private final int DEFAULT_CAPACITY = 10;
+    private final int MAX_SIZE_DEFAULT = 10;
     private int begin = 0;
     private int end = 0;
 
@@ -23,7 +22,7 @@ public class MyQueue<T> {
     }
 
     public MyQueue() {
-        list = (T[]) new Object[DEFAULT_CAPACITY];
+        list = (T[]) new Object[MAX_SIZE_DEFAULT];
     }
 
 
@@ -33,7 +32,11 @@ public class MyQueue<T> {
         }
         size++;
         list[end] = item;
-        end = nextIndex(end);
+        end++;
+        if(end > MAX_SIZE_DEFAULT -1 ){
+            end=0;
+        }
+//        end = nextIndex(end);
     }
 
     public T remove() {

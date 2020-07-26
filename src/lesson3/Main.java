@@ -25,7 +25,7 @@ public class Main {
 //        System.out.println(queue);
 //
 //        for (int i = 0; i < 3 ; i++) {
-//            System.out.println(queue.remove());
+//            System.out.println(queue.removeRight());
 //        }
 
 
