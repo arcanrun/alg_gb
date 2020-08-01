@@ -26,5 +26,11 @@ public class Task01 {
         System.out.println(listIterator.previous());
         System.out.println(listIterator.previous());
         System.out.println(listIterator.hasPrevious());
+        listIterator.remove();
+        System.out.println(myLinkedList);
+        System.out.println(listIterator.hasPrevious());
+        System.out.println(listIterator.nextIndex());
+        System.out.println(listIterator.previousIndex());
+
     }
 }
