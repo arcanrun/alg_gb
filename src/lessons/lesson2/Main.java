@@ -1,7 +1,4 @@
-package lesson2;
-
-import java.time.Instant;
-import java.util.*;
+package lessons.lesson2;
 
 public class Main {
     public static void main(String[] args) {

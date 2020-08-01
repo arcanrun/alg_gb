@@ -1,6 +1,6 @@
-package hm03.task01;
+package homeworks.hm03.task01;
 
-import lesson3.MyStack;
+import lessons.lesson3.MyStack;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package hm03.task02;
+package homeworks.hm03.task02;
 
 import java.util.EmptyStackException;
 
