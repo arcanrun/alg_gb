@@ -1,4 +1,4 @@
-package homeworks.hm04.task01;
+package homeworks.hw04.task01;
 
 import lessons.lesson4.MyLinkedList;
 
