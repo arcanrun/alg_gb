@@ -1,4 +1,4 @@
-package homeworks.hw05;
+package homeworks.hw05.task01;
 
 public class Task01 {
     public static void main(String[] args) {
