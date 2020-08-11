@@ -38,7 +38,7 @@ public class BreadthFirstPath {
         return marked[v];
     }
 
-    public LinkedList<Integer> pathTo(int v) {
+    final public LinkedList<Integer> pathTo(int v) {
         if (!hasPathTo(v)) {
             return null;
         }
@@ -49,5 +49,11 @@ public class BreadthFirstPath {
             vertex = edgeTo[vertex];
         }
         return stack;
+    }
+
+    public void pathToWithLength(int v){
+        LinkedList<Integer> pathTo = pathTo(v);
+        System.out.println(pathTo + " " + pathTo.size());
+
     }
 }

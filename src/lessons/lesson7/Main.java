@@ -22,6 +22,7 @@ public class Main {
         System.out.println(bfp.hasPathTo(0));
         System.out.println(bfp.pathTo(0));
         System.out.println(bfp.hasPathTo(3));
+        bfp.pathToWithLength(0);
 
     }
 }
