@@ -10,19 +10,19 @@ public class Main {
         graph.addEdge(3,4);
         graph.addEdge(2,4);
 
-//        System.out.println(graph.getAdjList(1));
-//
-//        DepthFirstPaths dfp = new DepthFirstPaths(graph, 2 );
-//        System.out.println(dfp.hasPathTo(0));
-//        System.out.println(dfp.pathTo(0));
-//        System.out.println(dfp.hasPathTo(3));
+        System.out.println(graph.getAdjList(1));
+
+        DepthFirstPaths dfp = new DepthFirstPaths(graph, 2 );
+        System.out.println(dfp.hasPathTo(0));
+        System.out.println(dfp.pathTo(0));
+        System.out.println(dfp.hasPathTo(3));
 
 
-        BreadthFirstPath bfp = new BreadthFirstPath(graph, 2);
-        System.out.println(bfp.hasPathTo(0));
-        System.out.println(bfp.pathTo(0));
-        System.out.println(bfp.hasPathTo(3));
-        bfp.pathToWithLength(0);
+//        BreadthFirstPath bfp = new BreadthFirstPath(graph, 2);
+//        System.out.println(bfp.hasPathTo(0));
+//        System.out.println(bfp.pathTo(0));
+//        System.out.println(bfp.hasPathTo(3));
+//        bfp.pathToWithLength(0);
 
     }
 }

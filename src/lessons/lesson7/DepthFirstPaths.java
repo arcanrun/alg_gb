@@ -35,7 +35,7 @@ public class DepthFirstPaths {
         }
         LinkedList<Integer> stack = new LinkedList<>();
         int vertex = v;
-        while(vertex != source){
+        while (vertex != source) {
             stack.push(vertex);
             vertex = edgeTo[vertex];
         }

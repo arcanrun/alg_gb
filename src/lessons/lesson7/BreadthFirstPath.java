@@ -51,7 +51,7 @@ public class BreadthFirstPath {
         return stack;
     }
 
-    public void pathToWithLength(int v){
+    public void pathToWithLength(int v) {
         LinkedList<Integer> pathTo = pathTo(v);
         System.out.println(pathTo + " " + pathTo.size());
 
