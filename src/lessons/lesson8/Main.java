@@ -25,10 +25,5 @@ public class Main {
 
         Random random = new Random();
 
-        for (int i = 0; i < 6; i++) {
-            chm.put(random.nextInt(100),"");
-        }
-
-        System.out.println(chm);
     }
 }
