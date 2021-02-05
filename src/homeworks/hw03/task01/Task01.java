@@ -1,4 +1,4 @@
-package homeworks.hm03.task01;
+package homeworks.hw03.task01;
 
 import lessons.lesson3.MyStack;
 
