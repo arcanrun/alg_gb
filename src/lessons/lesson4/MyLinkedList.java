@@ -1,8 +1,9 @@
 package lessons.lesson4;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 
-public class MyLinkedList<T> implements Iterable<T>{
+public class MyLinkedList<T> implements Iterable<T> {
     private Node first;
     private Node last;
     private int size;
@@ -10,6 +11,10 @@ public class MyLinkedList<T> implements Iterable<T>{
     @Override
     public Iterator<T> iterator() {
         return new Iter();
+    }
+
+    public ListIterator<T> getListIterator() {
+        return new ListIter();
     }
 
     public MyLinkedList() {
@@ -38,8 +43,9 @@ public class MyLinkedList<T> implements Iterable<T>{
         }
     }
 
-    private class Iter implements Iterator<T>{
+    private class Iter implements Iterator<T> {
         Node current = new Node(null, first);
+
         @Override
         public boolean hasNext() {
             return current.next != null;
@@ -49,6 +55,77 @@ public class MyLinkedList<T> implements Iterable<T>{
         public T next() {
             current = current.next;
             return current.value;
+        }
+    }
+
+    private class ListIter implements ListIterator<T> {
+        Node current;
+        int index;
+
+        public ListIter() {
+            current = new Node(null, first);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current.next != null;
+        }
+
+        @Override
+        public T next() {
+            index++;
+            if (current.next == null) {
+                index = size;
+            }
+            current = current.next;
+            return current.value;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return current.previous != null;
+        }
+
+        @Override
+        public T previous() {
+            index--;
+            if (current.previous == null) {
+                index = -1;
+            }
+            current = current.previous;
+            return current.value;
+        }
+
+        @Override
+        public int nextIndex() {
+            if (current.next == null) {
+                return size;
+
+            } return index;
+        }
+
+        @Override
+        public int previousIndex() {
+
+            if (current.previous == null) {
+                return -1;
+            }
+            return index;
+        }
+
+        @Override
+        public void remove() {
+            delete(current.value);
+        }
+
+        @Override
+        public void set(T t) {
+            insert(size, t);
+        }
+
+        @Override
+        public void add(T t) {
+
         }
     }
 
@@ -142,13 +219,13 @@ public class MyLinkedList<T> implements Iterable<T>{
         }
 
         Node current = first;
-        while (current!= null && !current.value.equals(item)) {
+        while (current != null && !current.value.equals(item)) {
             current = current.next;
         }
         if (current == null) {
             return false;
         }
-        if(current == last){
+        if (current == last) {
             deleteLast();
             return true;
         }
